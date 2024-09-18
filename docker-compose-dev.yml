@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: medidefenduser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: medidefend
+    volumes:
+      - md_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - platform_network
+  adminer:
+    image: adminer
+    ports:
+      - "8090:8080"
+    depends_on:
+      - postgres
+    networks:
+      - platform_network
+
+volumes:
+  md_data:
+
+networks:
+  platform_network:
+    external: true
+

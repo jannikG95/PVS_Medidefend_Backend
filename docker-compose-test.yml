@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  medidefend_backend:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      POSTGRES_USER: medidefenduser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: medidefend
+      POSTGRES_HOST: postgres
+      ENVIRONMENT: DEV # oder DEV für die Entwicklungsumgebung
+    networks:
+      - platform_network
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: medidefenduser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: medidefend
+    volumes:
+      - md_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - platform_network
+
+volumes:
+  md_data:
+
+networks:
+  platform_network:
+    external: true
