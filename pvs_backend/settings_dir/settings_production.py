@@ -4,7 +4,8 @@ Django production settings for aidjangoplatform project.
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["212.227.170.196", "medidefend.jannik-geyer.de"]
+# ALLOWED_HOSTS = ["212.227.170.196", "medidefend.jannik-geyer.de", "10.202.20.2"]
+ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
     'https://medidefend.jannik-geyer.de',
