@@ -9,6 +9,7 @@ ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
     'https://medidefend.jannik-geyer.de',
+    'http://10.202.20.2:3001',
 ]
 
 # GPT Login Data
